@@ -1,0 +1,6 @@
+framework module Pods_hit_7th {
+  umbrella header "Pods-hit_7th-umbrella.h"
+
+  export *
+  module * { export * }
+}

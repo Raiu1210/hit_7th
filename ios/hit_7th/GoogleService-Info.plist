@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>115108982132-liaa7k1aa8514gq7qha5ptqkb0cp4dc8.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.115108982132-liaa7k1aa8514gq7qha5ptqkb0cp4dc8</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB8gjH1eAZ0uhWx_CD3Ml9HNrHGkhyxDpg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>115108982132</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>rain.hit7.ranking</string>
+	<key>PROJECT_ID</key>
+	<string>hit-7th</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hit-7th.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:115108982132:ios:3e187791ab1b1676</string>
+	<key>DATABASE_URL</key>
+	<string>https://hit-7th.firebaseio.com</string>
+</dict>
+</plist>
