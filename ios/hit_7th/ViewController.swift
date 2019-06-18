@@ -15,8 +15,6 @@ class ViewController: UIViewController, GADBannerViewDelegate {
     var viewHeight:CGFloat = 0.0
     var bannerView: GADBannerView!
     let data_server = "http://zihankimap.work/hit_7th/datalist"
-    let first_label = UILabel()
-    let top_label = UILabel()
     let scrollView = UIScrollView()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -88,20 +86,10 @@ class ViewController: UIViewController, GADBannerViewDelegate {
     }
     
     private func create_view(num_of_Q:Int) {
-
-        let rgba = UIColor(red: 0.1, green: 0.7, blue: 0.7, alpha: 0.5)
-        top_label.frame = CGRect(x:0, y:0, width:Int(viewWidth), height:90)
-        top_label.backgroundColor = rgba
-        top_label.numberOfLines = 0
-        top_label.text = "\n7位を当てろ！"
-        top_label.font = UIFont.boldSystemFont(ofSize: 20.0)
-        top_label.textAlignment = NSTextAlignment.center
-        
         scrollView.frame = CGRect(x: 0, y: 90, width: viewWidth, height: viewHeight-90)
         scrollView.contentSize = CGSize(width: Int(viewWidth), height: 80*(num_of_Q+1))
         
         self.view.addSubview(scrollView)
-//        self.view.addSubview(top_label)
     }
     
     private func create_button(index:Int, id:Int, title:String) {
