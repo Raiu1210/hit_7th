@@ -22,12 +22,14 @@ class ViewController: UIViewController, GADBannerViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        self.title = "7位を当てろ！"
         viewWidth = self.view.frame.width
         viewHeight = self.view.frame.height
         self.view.backgroundColor = UIColor.white
         get_data_from_server(url: data_server)
         show_banner_ad()
     }
+    
     
     private func show_banner_ad() {
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
@@ -69,18 +71,21 @@ class ViewController: UIViewController, GADBannerViewDelegate {
             self.appDelegate.json_string = jsonString
 //            print(json_Data)
             
-            do {
-                let parsed_data = try JSON(data: json_Data)
-                let num_of_Q = parsed_data.count
-                self.create_view(num_of_Q: num_of_Q)
-                print(num_of_Q)
-                for i in 0 ..< parsed_data.count
-                {
-                    let id = parsed_data[i]["id"].stringValue
-                    let title = parsed_data[i]["title"].stringValue
-                    self.create_button(index:i, id: Int(id)!, title: title)
-                }
-            } catch { print(error) }
+            DispatchQueue.main.async {
+                do {
+                    let parsed_data = try JSON(data: json_Data)
+                    let num_of_Q = parsed_data.count
+                    self.create_view(num_of_Q: num_of_Q)
+                    print(num_of_Q)
+                    for i in 0 ..< parsed_data.count
+                    {
+                        let id = parsed_data[i]["id"].stringValue
+                        let title = parsed_data[i]["title"].stringValue
+                        self.create_button(index:i, id: Int(id)!, title: title)
+                    }
+                } catch { print(error) }
+            }
+            
             }
             }.resume()
     }
@@ -93,7 +98,6 @@ class ViewController: UIViewController, GADBannerViewDelegate {
     }
     
     private func create_button(index:Int, id:Int, title:String) {
-        self.title = "7位を当てろ！"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         let Q_Button = UIButton()
         Q_Button.frame = CGRect(x:0, y:80*index, width:Int(viewWidth), height:80)

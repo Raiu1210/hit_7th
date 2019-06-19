@@ -13,6 +13,7 @@ import GoogleMobileAds
 class QuizViewController: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var num = [5, 6, 7, 8].shuffled()
+    var countries:[String] = []
     var data:[String:String] = [:]
     var index = 0
     var message = ""
@@ -23,7 +24,10 @@ class QuizViewController: UIViewController {
     
         prepare_quiz()
         show_banner_ad()
+        set_navigation_bar()
     }
+    
+    
     
     private func show_banner_ad() {
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
@@ -140,15 +144,19 @@ class QuizViewController: UIViewController {
         if(num[counter] == 7) {
             choice_Button.setTitle(data["7th"]!, for: .normal)
             choice_Button.addTarget(self, action: #selector(chose_correct_answer(_:)), for: .touchUpInside)
+            countries.append(data["7th"]!)
         } else if(num[counter] == 5){
             choice_Button.setTitle(data["5th"]!, for: .normal)
             choice_Button.addTarget(self, action: #selector(chose_wrong_answer(_:)), for: .touchUpInside)
+            countries.append(data["5th"]!)
         } else if(num[counter] == 6){
             choice_Button.setTitle(data["6th"]!, for: .normal)
             choice_Button.addTarget(self, action: #selector(chose_wrong_answer(_:)), for: .touchUpInside)
+            countries.append(data["6th"]!)
         } else if(num[counter] == 8){
             choice_Button.setTitle(data["8th"]!, for: .normal)
             choice_Button.addTarget(self, action: #selector(chose_wrong_answer(_:)), for: .touchUpInside)
+            countries.append(data["8th"]!)
         }
         
         self.view.addSubview(choice_Button)
@@ -172,6 +180,21 @@ class QuizViewController: UIViewController {
                 present(Alert1_correct, animated: true, completion: nil)
     }
     
+    
+    private func set_navigation_bar() {
+        let actionButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(clickActionButton(_:)))
+        self.navigationItem.setRightBarButtonItems([actionButton], animated: true)
+    }
+    
+    @objc func clickActionButton(_: UIBarButtonItem) {
+        var choices = "A:\(countries[0])\nB:\(countries[1])\nC:\(countries[2])\nD:\(countries[3])\n\n"
+        
+        let text = "問題：" + data["title"]! + "\n第7位は？\n\n" + choices + "iPhone:https://apps.apple.com/jp/app/7%E4%BD%8D%E3%82%92%E5%BD%93%E3%81%A6%E3%82%8D/id1468442673\n\n#7位当て"
+        //        let image: UIImage = #imageLiteral(resourceName: "画像リソース名")
+        let shareItems = [text] as [Any]
+        let controller = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+        present(controller, animated: true, completion: nil)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
