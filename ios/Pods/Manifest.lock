@@ -54,11 +54,13 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - ReachabilitySwift (4.3.1)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Firebase/AdMob
   - Firebase/Core
+  - ReachabilitySwift
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
@@ -71,6 +73,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - nanopb
+    - ReachabilitySwift
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -82,8 +85,9 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 51d8d9ea48f0ca44484d29cfbdef976fbd4fc336
   GoogleUtilities: 996e0db07153674fd1b54b220fda3a3dc3547cba
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 09fcf1eb2f7810f93d4fb888adbf4cd52641373c
+PODFILE CHECKSUM: f3fb1f21684ba2907c9ba5db7bb302e171b8ac20
 
 COCOAPODS: 1.7.1

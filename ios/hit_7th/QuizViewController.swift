@@ -8,10 +8,12 @@
 
 import UIKit
 import SwiftyJSON
+import Reachability
 import GoogleMobileAds
 
 class QuizViewController: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let reachability = Reachability()!
     var num = [5, 6, 7, 8].shuffled()
     var countries:[String] = []
     var data:[String:String] = [:]
@@ -22,15 +24,23 @@ class QuizViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        prepare_quiz()
-        show_banner_ad()
-        set_navigation_bar()
+        // when Online and Offline
+        if reachability.connection == .wifi || reachability.connection == .cellular {
+            prepare_quiz()
+            show_banner_ad()
+            set_navigation_bar()
+        } else {
+            prepare_quiz()
+            set_navigation_bar()
+        }
+        
     }
     
     
     
     private func show_banner_ad() {
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+//        bannerView.adUnitID = "ca-app-pub-3940256099942544/6300978111" // test
         bannerView.adUnitID = "ca-app-pub-9410270200655875/1210000198"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
